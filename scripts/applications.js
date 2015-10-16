@@ -24,6 +24,7 @@ $(document).ready(function() {
 		DUMP_CORE_MSG = 	'OH NO... THIS WILL HURT --------------->CORE DUMP................ '; 
 		CAT_PIC_MSG = 	'Is this boring you? I apologize, but please try and maintain focus. ' +
 						'Now close the cat pics, and lets get back to the task at hand.';
+		GUESS_DIR_MSG = 'You\'re last guess was in the wrong direction. '; 
 		FEEDBACK_ELT = 	"<li class='feedback'><h3> </h3></li>",			
 		PROMPT_ELT = 	"<li class='prompt'><h3> </h3></li>",
 		CATFOLDER_ELT = "<div class='cat-folder clicked' id='cats'><a href=#>Close</a><img src='assets/IMG_6920.jpg' alt='picture of calico cat'><img src='assets/IMG_8107.JPG' alt='white cat with leg up'><img src='assets/IMG_8839.JPG' alt='calico cat eating'><img src='assets/IMG_6889.JPG' alt='gray brown cat in tall grass'></div>";
@@ -34,6 +35,7 @@ $(document).ready(function() {
 	function Game() {
 		this.target = Math.ceil(Math.random() * 100); 
 		this.userGuess = []; 
+		this.dirHint = []; 
 		this.hotOrCold = ['extremely hot', 'hot', 'warm', 'cool', 'just plain cold'];
 	  	this.warnings = ['',
 	  		" Only 1 guess left...!!! PLEASE TRY YOUR BEST!",
@@ -175,7 +177,6 @@ $(document).ready(function() {
 				break; 
 			
 			case '1to100' :
-				console.log('entered ', myGame.state, 'guess is ', response, 'target is ', myGame.target); 		
 				// Did user guess correctly? 
 				if (response === myGame.target) {
 					myGame.state = 'startOver'; 
@@ -187,9 +188,11 @@ $(document).ready(function() {
 					machSays(REP_GUESS_MSG); 
 					return; 
 				};
-				// Is user out of guesses? 
+				
 				myGame.userGuess.push(response);
 				var remGuesses = NUMBER_OF_GUESSES - myGame.userGuess.length;
+				
+				// Is user out of guesses? 				
 				if (remGuesses === 0) {
 					myGame.state = 'coreDumped'; 
 					machSays(DUMP_CORE_MSG); 
@@ -201,15 +204,27 @@ $(document).ready(function() {
 					setTimeout(finalMsg, 1250); 
 					return; 
 				};
+
 				// Give the user a bit of guidance
 				var diff = response - myGame.target,
 					absDiff = Math.abs(diff),
-					warning = (myGame.warnings[remGuesses]||""), 
+					warning = (myGame.warnings[remGuesses]||""),
+					oldGuess = myGame.userGuess[myGame.userGuess.length -1],
+					twoOldGuess = myGame.userGuess[myGame.userGuess.length -2], 
+					dirWarning = '',
 					direction,
 					idx; 
+
 				diff <=0 ? direction = 'higher' : direction = 'lower'; 
+				myGame.dirHint.push(direction); 
+
+				if ((myGame.dirHint[myGame.dirHint.length-2] === 'higher' && (oldGuess - twoOldGuess) < 0) ||
+					(myGame.dirHint[myGame.dirHint.length-2] === 'lower'  && (oldGuess - twoOldGuess) > 0)) {
+						dirWarning = GUESS_DIR_MSG; 
+				}; 
+				
 				absDiff < 5 ? idx = 0 : absDiff < 10 ? idx = 1 : absDiff < 15 ? idx = 2 : absDiff < 25 ? idx = 3 : idx = 4; 
-				machSays("You are " + myGame.hotOrCold[idx]+ ". You should guess " + direction + '. ' + 
+				machSays(dirWarning + "You are " + myGame.hotOrCold[idx]+ ". You should guess " + direction + '. ' + 
 						(warning ? warning : ('You have ' + remGuesses + ' guesses remaining.')));
 				break; 
 			
