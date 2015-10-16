@@ -1,15 +1,55 @@
 /**************************************
-COLORS
+VENDOR PREFIXES - NORMALIZE INPUT PLACEHOLDER VALUE
 **************************************/
 
-body {
-	background-color: #fff; 
-	color: #888;
-	font: 300 16px/20px Helvetica, Arial, sans-serif; 
+::-webkit-input-placeholder {
+   color: #00cc33;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+   color: #00cc33;  
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+   color: #00cc33;  
+}
+
+:-ms-input-placeholder {  
+   color: #00cc33;  
 }
 
 /**************************************
-GRID
+COLORS
+**************************************/
+body {
+	color: #fff;
+	background-color: #555; 	
+	font: 300 16px/20px "Work Sans", sans-serif; 
+}
+
+#wrapper {
+	background-image: url("../assets/background_img.png");
+	background-repeat: no-repeat;
+	background-color: #555; 
+	background-position: center; 	
+	background-size: 100% 100%;
+}
+
+footer {
+	color: #dfe2e5;
+}
+
+footer p {
+	color: #dfe2e5;
+}
+
+h3, p, input {
+	color: #00cc33;
+}
+
+
+/**************************************
+STRUCTURE
 **************************************/
 *,
 *:before,
@@ -19,169 +59,176 @@ GRID
           box-sizing: border-box;
 }
 
-.container {
-	margin: 0 auto;
-	max-width: 960px;
-	padding-left: 30px;
-	padding-right: 30px;
+#wrapper {
+	width: 95%; 
+	height: 90%; 
+	padding: 0; 
+	border: 3px double #ccc; 
+	margin: auto;  /* center wrapper within body */
+	margin-top: 20px;
 }
 
-.banner {
-	clear: both;
+footer {
+	height: 5%;
+	clear: both; 
+	position: bottom;
+	padding: 10px;
 }
 
-.group:before,
-.group:after {
-  content: "";
-  display: table;
+.desktop-folders {
+	float: left;
+	height: 100%;
+	width: 20%;
+	/*margin-right: 0;*/
 }
-.group:after {
-  clear: both;
+
+.terminal-box {
+	float: left;
+	height: 75%;
+	width: 60%;
+	margin-top: 5%;
+	border: 1px solid #dfe2e5;
+	background-color: #000;
+	overflow: auto;
+	position: relative;
+	z-index: 0;
+	/*bottom: 0; */
+/*	z-index: 2; 
+*/
 }
-.group {
-  clear: both;
-  *zoom: 1;
+
+.terminal {
+	margin: 5px 8px;
+	position: relative;
 }
 
 /**************************************
 TYPOGRAPHY
 **************************************/
-
-h1, h2, h3 {
-	color: #648880;
-}
-
-h1 {
-	font-size: 48px;
-	line-height: 44px;
-	display: block;
-}
-
-h2 {
-	font-size: 36px;
-	line-height: 36px; 
-}
-
-h3 {
+h3, p, input {
 	font-size: 14px;
 	line-height: 21px;
 }
+
 footer {
-	color: #648880;
 	font-size: 14px;
 }
 footer small {
 	font-weight: 400;
 }
 
+em {
+	font-weight: 600;
+}
+
 
 /**************************************
-HEADING
+BUTTONS AND INPUTS
 **************************************/
-header {
-	border-bottom: 2px solid #648880;
-}
-.logo {
-	/*border-top: 4px solid #648880;*/
-	float: left;
-	font-weight: 200;
-	letter-spacing: 0.5px;
-	line-height: 44px;
-	padding: 40px 0 22px 0;
-	font-variant: small-caps;
-}
-
-.tagline {
-	text-align: right;
-	padding: 40px 0 0 0 ;
-}
-/**************************************
-MAIN
-**************************************/
-
-
-.banner {
-	margin-top: 84px;
-	text-align: center;
-	margin-bottom: 36px;
-}
-
-.banner h2 {
-	margin-bottom: 14px; 
-}
-
-.sub-banner {
-	font-size: 24px;
-	/*line-height: 44px;*/
-}
-
-.button-area {
-	text-align: center;
-	margin-bottom: 144px;
-}
-
-h4 {
-	margin: 14px 0;
-}
-
-/**************************************
-FOOTER
-**************************************/
-footer {
-	padding-bottom: 44px;
-	padding-top: 14px;
-	border-top: 2px solid #648880;
-
-}
-footer small {
-	float: left;
-	font-weight: 400;
-}
-footer p {
-	text-align: right;
-}
-/**************************************
-BUTTONS and INPUTS
-**************************************/
-#playersGuess {
-	border-radius: 5px;
-	border: 1px solid #dfe2e5;
-	height: 60;
-	/*padding: 15px 35px;*/
-	background-color: #fff;
-	color: #648880;
-	font-size: 18px;
- }
-#restart, #hint {
-	border-radius: 5px;
-	border: 1px solid #dfe2e5;
-	padding: 5px 15px;
-	background-color: #fff;
-	color: #648880;
-	margin-top: 24px;
+.desktop-folders button {
+	display: block;	
+	width: 100px;
+	height: 100px;
 	font-size: 14px;
- }
+	color: #333;
+	line-height: 80px;
+	padding-top: 68px;	
+	vertical-align: bottom;
+	border: none;
+}
 
- #inputBox {
- 	border-radius: 5px;
-	border: 1px solid #dfe2e5;
-	height: 60;
-	width: 200;
-	/*padding: 16px 35px;*/
-	background-color: #fff;
-	color: #648880;
-	font-size: 18px;
-	font-style: italic;
-	text-align: center;	
- }
+.desktop-folders #cat-pics {
+	background-image: url("../assets/blue_folder.png");
+	background-repeat: no-repeat;
+	background-size: 100px 100px;
+	margin-top: 50px; 
+	margin-left: 50px;
 
+}
 
- #playersGuess:hover, #restart:hover, #hint:hover {
- 	color: #a9b2b9;
- }
+.desktop-folders #hint {
+	background-image: url("../assets/textFile_img.png");
+	background-repeat: no-repeat;
+	background-size: 100px 100px;
+	margin-top: 45px; 
+	margin-left: 25px;
+}
 
+.desktop-folders #reset {
+	background-image: url("../assets/textFile_img.png");
+	background-repeat: no-repeat;
+	background-size: 100px 100px;	
+	margin-top: 75px;
+	margin-left: 90px;
+}
+.desktop-folders button:hover {
+	border: 2px solid #000;
+}
 
+.prompt input {
+	display: inline-block;
+	border: none;
+	background-color: #000;
+	color: #00cc33;
+	margin-left: 3px;
+	width: 50%;
+}
 
+.prompt p {
+	display: inline-block;
+	border: none;
+	background-color: #000;
+	color: #00cc33;
+	margin-left: 3px;
+}
 
+.prompt input:focus {
+	border: none; 
+}
 
+.prompt h3 {
+	display: inline-block;
+}
+
+.cat-folder {	
+	position: absolute;
+	top: 60px;
+	left: 45px;
+	width: 600px;
+	text-align: center;
+	border: 1px solid #000;
+	background-color: #333;
+	/*z-index: 2;*/
+}
+.cat-folder img {
+	display: block;
+	float: left;
+	width: 40% ;
+	/*width: 150px;*/
+	margin: 2% 5%;
+}
+
+#masks {
+    -ms-transform: rotate(90deg); /* IE 9 */
+    -webkit-transform: rotate(90deg); /* Chrome, Safari, Opera */
+    transform: rotate(90deg);
+}
+
+#tabby {
+
+}
+
+.cat-folder a {
+	display: block;
+	clear: both;
+	color: #fff;
+}
+
+#wrapper .clicked {
+	z-index: 1; 
+}
+
+a:hover {
+	color: #00cc33; 
+}
 

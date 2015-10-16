@@ -3,41 +3,44 @@
 
 	<head>
 		<meta charset="utf-8">
-		<title>YourGuessAsGoodAsMine</title>
+		<title>W.O.P.R.</title>
 		<link rel="stylesheet" href="css/normalize.css">
-		<!--include google font here when typography selected-->
+		<link href='https://fonts.googleapis.com/css?family=Work+Sans:300,200,600' rel='stylesheet' type='text/css'>
 		<link rel="stylesheet" href="css/main.css">
 	</head>
 
 	<body>
 
-		<!-- HEADER -->
-		<header class="container group">
-			<h1 class="logo">The<br>Guessing<br>Game</h1>
-			<h3 class="tagline">Developed for you on October 8th in New York, NY</h3>
-		</header>
+		<section id="wrapper">
 
-		<!-- Banner -->		
-		<section class="banner container">
-			<h2>Is your guess really as good as mine?</h2>
-			<p class="sub-banner">Speaking truth to common wisdom since 2015.</p>
+			<!-- SIDE PANEL WITH 3 BUTTONS -->
+			<aside class='desktop-folders'>
+				<button type='button' id='cat-pics'>Cat Pictures</button>
+				<button type='button' id='hint'>Help file!</button>
+				<button type='button' id='reset'>ForceReboot</button>
+			</aside>
+
+			<!-- MAIN TERMINAL WINDOW -->
+			<div class='terminal-box'>
+				<ul class='terminal'> 
+					<!-- EXAMPLE OF CALL-RESPONSE STRUCTURE
+						 THAT WILL BE DYNAMICALLY ADDED -->
+					<!-- <li class='feedback'> 
+						<h3>Good morning. Would you like to play a game? (y or n)</h3>
+					</li>
+					<li class='prompt'>
+						<h3>W.O.P.R. : ~ unknown_user $</h3>
+						<input type='text' placeholder=''/>
+					</li> -->
+				</ul>
+			</div>
 		</section>
 
-		<!-- Main -->
-		<div class="container button-area">
-			<input type="text" id='inputBox' placeholder='Number from 1 to 100'/>
-			<button type='button' id='playersGuess'>Guess</button>
-			<h4 id="hotOrCold">Hot/cold message to appear here</h4>	
-			<button type='button' id='restart'>Start Over</button>
-			<button type='button' id='hint'>Give me a hint</button>
-			<h4 id="remainingGuesses">You have 5 guesses remaining</h4>
-		</div>
-
 		<!-- FOOTER -->
-		<footer class="container group">
+		<footer>
 			<small>&copy; ajpz_dev</small>
-			<p>Maybe have contact info here</p>
 		</footer>
-
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+		<script src="scripts/applications.js"></script>
 	</body>
 </html>
